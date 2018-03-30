@@ -9,4 +9,4 @@ xx
 
 You can find out more about these services by logging into to the [Azure portal](https://portal.azure.com/).
 
-[Proceed to the assignments](https://github.com/HenrikWM/NNUG_GAB2017/wiki)
+[Proceed to the assignments](https://github.com/HenrikWM/NNUG_GAB2018/wiki)
