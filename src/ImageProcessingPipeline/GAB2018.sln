@@ -1,0 +1,47 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAB.ImageProcessingPipeline.Web", "GAB.ImageProcessingPipeline.Web\GAB.ImageProcessingPipeline.Web.csproj", "{88002EC1-D20C-4E52-86A9-7184C40C2FDE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GAB.ImageProcessingPipeline.Functions", "GAB.ImageProcessingPipeline.Functions\GAB.ImageProcessingPipeline.Functions.csproj", "{236FC143-6040-4733-BB87-EB97342F3648}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAB.ImageProcessingPipeline.Common", "GAB.ImageProcessingPipeline.Common\GAB.ImageProcessingPipeline.Common.csproj", "{CDD342BE-2719-49A5-A25F-43B263FF8ADB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Application", "01 - Application", "{4E44FC92-9C4E-429F-8456-8CEFB19B2DFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Functions", "02 - Functions", "{6E80F6F2-CC74-4210-A7AE-5CFD4ED2A3D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Shared", "03 - Shared", "{06EDD6A8-7B99-45F6-AB34-3A6816A367D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88002EC1-D20C-4E52-86A9-7184C40C2FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88002EC1-D20C-4E52-86A9-7184C40C2FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88002EC1-D20C-4E52-86A9-7184C40C2FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88002EC1-D20C-4E52-86A9-7184C40C2FDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{236FC143-6040-4733-BB87-EB97342F3648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{236FC143-6040-4733-BB87-EB97342F3648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{236FC143-6040-4733-BB87-EB97342F3648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{236FC143-6040-4733-BB87-EB97342F3648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD342BE-2719-49A5-A25F-43B263FF8ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD342BE-2719-49A5-A25F-43B263FF8ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD342BE-2719-49A5-A25F-43B263FF8ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD342BE-2719-49A5-A25F-43B263FF8ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88002EC1-D20C-4E52-86A9-7184C40C2FDE} = {4E44FC92-9C4E-429F-8456-8CEFB19B2DFE}
+		{236FC143-6040-4733-BB87-EB97342F3648} = {6E80F6F2-CC74-4210-A7AE-5CFD4ED2A3D3}
+		{CDD342BE-2719-49A5-A25F-43B263FF8ADB} = {06EDD6A8-7B99-45F6-AB34-3A6816A367D3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45E4788E-6F03-49DC-9FD4-4714167F3B7E}
+	EndGlobalSection
+EndGlobal
