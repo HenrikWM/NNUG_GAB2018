@@ -1,0 +1,151 @@
+@using GAB.ImageProcessingPipeline.Common
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Uploading an image will trigger processing. Processed images will appear once they are created.</p>
+
+<br />
+
+<section class="fileupload-section">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Upload image</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="Files">Select image:</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" id="Files" name="file" accept="@string.Join(",", Constants.AcceptedImageFileFormats)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="Files">Preview:</label>
+                    <div class="col-sm-10">
+                        <img id="PreviewImage" class="image-preview" alt="Preview image" style="display: none;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button id="UploadButton" type="submit" class="btn btn-primary">Upload image</button>
+                        <br /><br />
+                        <p id="FileUploadErrorText" class="text-danger"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br />
+
+@Html.Partial("modules/Original")
+
+<br />
+
+@Html.Partial("modules/Exif")
+
+<br />
+
+@Html.Partial("modules/CognitiveServices")
+
+<br />
+
+@Html.Partial("modules/Scaled")
+
+<br />
+
+@Html.Partial("modules/ColorMatrix")
+
+@section scripts {
+    <script type="text/javascript" async>
+        function resetUpload() {
+            console.log("State changed: reset");
+
+            resetUploadFailed();
+
+            originalModule.reset();
+            exifModule.reset();
+            scalingModule.reset();
+            colorMatrixModule.reset();
+            cognitiveServicesModule.reset();
+        }
+
+        function processingInProgress(fileName) {
+            console.log("State changed: in progress");
+
+            originalModule.startPollingForResource(fileName);
+            exifModule.startPollingForResource(fileName);
+            scalingModule.startPollingForResource(fileName);
+            colorMatrixModule.startPollingForResource(fileName);
+            cognitiveServicesModule.startPollingForResource(fileName);
+        }
+
+        function resetUploadFailed() {
+            $("#FileUploadErrorText").text('');
+            $("#FileUploadErrorText").hide();
+        }
+
+        function displayUploadFailed(message) {
+            $("#FileUploadErrorText").text(message);
+            $("#FileUploadErrorText").show();
+        }
+
+        $(document).ready(function () {
+            resetUpload();
+
+            $('#UploadButton').click(function () {
+                resetUpload();
+
+                var fileInput = $("#Files").get(0);
+                var file = fileInput.files[0];
+                if (file === undefined) {
+                    alert("Please select a file");
+                    return;
+                }
+
+                var formData = new FormData();
+                formData.append("file", file);
+
+                $.ajax({
+                    url: '/Upload/UploadFileAsync',
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function (result) {
+                        console.log("Upload-page: Upload successful", result);
+
+                        if (result.success === true) {
+                            processingInProgress(file.name);
+                        } else {
+                            displayUploadFailed(result.message);
+                        }
+                    },
+                    error: function (err) {
+                        console.log("Upload-page: Upload error", err);
+
+                        displayUploadFailed(err.statusText);
+                    }
+                });
+            });
+
+            $('#Files').change(function () {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        setImage("PreviewImage", e.target.result);
+                        $("#PreviewImage").show();
+                    }
+
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+    </script>
+}

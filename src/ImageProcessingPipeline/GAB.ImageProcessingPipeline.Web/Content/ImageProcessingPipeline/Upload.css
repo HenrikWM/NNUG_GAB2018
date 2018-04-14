@@ -1,0 +1,14 @@
+.image-preview {
+    padding-top: 7px;
+    width: 10%;
+    height: auto;
+}
+
+.section-processing .panel-title img {
+    padding-bottom: 2px;
+}
+
+.container-flex {
+    display: flex;
+    flex-wrap: wrap;
+}

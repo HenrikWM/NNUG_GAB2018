@@ -1,0 +1,10 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "## AZURE STORAGE CONNECTION STRING ##",
+        "AzureWebJobsDashboard": "## AZURE STORAGE CONNECTION STRING ##",
+        "BlobStorage": "## AZURE STORAGE CONNECTION STRING ##",
+        "CognitiveServicesSubscriptionKey": "## COGNITIVE SERVICES SUBSCRIPTION KEY ##",
+        "CognitiveServicesApiRoot": "## API URL TO COGNITIVE SERVICES ##"
+    }
+}
