@@ -201,7 +201,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="HiddenAppSettings.config.example" />
-    <None Include="Properties\PublishProfiles\gab2018hwmweb2 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ImageProcessingPipeline\modules\base-module.js" />
     <Content Include="Scripts\ImageProcessingPipeline\modules\colorMatrix-module.js" />
@@ -242,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
