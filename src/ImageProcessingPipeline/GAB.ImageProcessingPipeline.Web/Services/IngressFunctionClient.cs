@@ -12,7 +12,7 @@ namespace GAB.ImageProcessingPipeline.Web.Services
     {
         private static readonly HttpClient Client = new HttpClient();
 
-        private static readonly string Url = AppSettings.IngressFunctionBaseUrl + "api/ingress";
+        private static readonly string Url = AppSettings.IngressFunctionBaseUrl + "/api/ingress";
 
         public static async Task<bool> UploadFile(HttpPostedFileBase file)
         {
