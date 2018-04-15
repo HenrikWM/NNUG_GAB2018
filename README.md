@@ -5,9 +5,11 @@ This is a collection of workshop assignments that were given at NNUG's Global Az
 
 ## Assignments overview
 
-Using Azure services you will create a serverless image processing pipeline with Azure Functions. The application will allow a user to upload an image and view live-updates as the image and artifacts travel through the pipeline, and become available post-processing.
+Using Azure services you will create a serverless image processing pipeline with Azure Functions. You will run a ASP.NET MVC web app that triggers the pipeline, and each function you develop will display its results in the app live as images have completed processing.
 
-During work on the assignments you will get familiar with Azure Functions and serverless architecture, Azure Storage and blob containers, and the Azure portal.
+You are free to choose how many functions you create, and the type of processing the functions do; e.g. image scaling, EXIF-extraction, image matrixes and more. Be creative! A more guided assignment-set will be also be provided.
+
+During work on the assignments you will get familiar with Azure Functions, serverless architecture, Azure Storage and Blob Containers.
 
 You can find out more about these services by logging into to the [Azure portal](https://portal.azure.com/).
 
