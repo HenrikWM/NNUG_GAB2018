@@ -446,7 +446,10 @@
             "name": "[variables('sites_appinsights_name')]",
             "apiVersion": "2015-05-01",
             "location": "[resourceGroup().location]",
-            "tags": {},
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('sites_nnuggab2018web_name'))]": "Resource",
+                "displayName": "App Insights"
+            },
             "scale": null,
             "properties": {
                 "Application_Type": "web",
@@ -454,7 +457,7 @@
                 "Request_Source": "IbizaAIExtension",
                 "HockeyAppId": "",
                 "SamplingPercentage": null,
-                "applicationId": "[variables('sites_appinsights_name')]"
+                "applicationId": "[variables('sites_nnuggab2018web_name')]"
             },
             "dependsOn": []
         }     
