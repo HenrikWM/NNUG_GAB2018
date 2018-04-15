@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <appSettings>
-    <add key="APPINSIGHTS_INSTRUMENTATIONKEY" value="## APPLICATION INSIGHTS INSTRUMENTATION KEY ##"/>
     <add key="BlobStorage" value="## AZURE STORAGE CONNECTION STRING ##" />
     <add key="Endpoints.IngressFunction.BaseUrl" value="## INGRESS FUNCTION URL ##" />
     <add key="FunctionsKey" value="## FUNCTIONS KEY ##" />

@@ -10,12 +10,13 @@
         "sites_nnuggab2018web_name": "[concat('nnuggab2018', parameters('your_initials'), 'web')]",
         "serverfarms_nnug_gab2018_name": "[concat('nnug-gab2018-', parameters('your_initials'))]",
         "sites_nnuggab2018functions_name": "[concat('nnuggab2018', parameters('your_initials'), 'functions')]",
+        "sites_appinsights_name": "[concat('nnuggab2018', parameters('your_initials'), 'appinsights')]",
         "storageAccounts_nnuggab2018_name": "[concat('nnuggab2018', parameters('your_initials'))]",
         "config_web_name": "web",
         "hostNameBindings_nnuggab2018web.azurewebsites.net_name": "[concat('nnuggab2018', parameters('your_initials'), 'web.azurewebsites.net')]",
         "hostNameBindings_nnuggab2018functions.azurewebsites.net_name": "[concat('nnuggab2018', parameters('your_initials'), 'functions.azurewebsites.net')]"
     },
-    "resources": [
+    "resources": [        
         {            
             "type": "Microsoft.Storage/storageAccounts",
             "sku": {
@@ -25,7 +26,7 @@
             "kind": "Storage",
             "name": "[variables('storageAccounts_nnuggab2018_name')]",
             "apiVersion": "2017-10-01",
-            "location": "westeurope",
+            "location": "[resourceGroup().location]",
             "tags": {},
             "scale": null,
             "properties": {
@@ -62,7 +63,7 @@
             "kind": "app",
             "name": "[variables('serverfarms_nnug_gab2018_name')]",
             "apiVersion": "2016-09-01",
-            "location": "West Europe",
+            "location": "[resourceGroup().location]",
             "scale": null,
             "properties": {
                 "name": "[variables('serverfarms_nnug_gab2018_name')]",
@@ -81,7 +82,7 @@
             "kind": "app",
             "name": "[variables('sites_nnuggab2018web_name')]",
             "apiVersion": "2016-08-01",
-            "location": "West Europe",            
+            "location": "[resourceGroup().location]",            
             "scale": null,
             "properties": {
                 "enabled": true,
@@ -115,8 +116,32 @@
                 "dailyMemoryTimeQuota": 0,
                 "cloningInfo": null
             },
+            "resources": [
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "appsettings",
+                    "type": "config",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', variables('sites_nnuggab2018web_name'))]"
+                    ],
+                    "properties": {
+                        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', variables('sites_appinsights_name'))).InstrumentationKey]"
+                    }
+                },
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "Microsoft.ApplicationInsights.AzureWebSites",
+                    "type": "siteextensions",
+                    "dependsOn": [                
+                        "[resourceId('Microsoft.Web/Sites', variables('sites_nnuggab2018web_name'))]"
+                    ],
+                    "properties": {
+                    }            
+                }       
+            ],
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_nnug_gab2018_name'))]"
+                "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_nnug_gab2018_name'))]",
+                "[resourceId('microsoft.insights/components/', variables('sites_appinsights_name'))]"
             ]
         },
         {            
@@ -124,7 +149,7 @@
             "kind": "functionapp",
             "name": "[variables('sites_nnuggab2018functions_name')]",
             "apiVersion": "2016-08-01",
-            "location": "West Europe",            
+            "location": "[resourceGroup().location]",            
             "scale": null,
             "properties": {
                 "enabled": true,
@@ -166,7 +191,7 @@
             "type": "Microsoft.Web/sites/config",
             "name": "[concat(variables('sites_nnuggab2018web_name'), '/', variables('config_web_name'))]",
             "apiVersion": "2016-08-01",
-            "location": "West Europe",            
+            "location": "[resourceGroup().location]",            
             "scale": null,
             "properties": {
                 "numberOfWorkers": 1,
@@ -276,7 +301,7 @@
             "type": "Microsoft.Web/sites/hostNameBindings",
             "name": "[concat(variables('sites_nnuggab2018web_name'), '/', variables('hostNameBindings_nnuggab2018web.azurewebsites.net_name'))]",
             "apiVersion": "2016-08-01",
-            "location": "West Europe",
+            "location": "[resourceGroup().location]",
             "scale": null,
             "properties": {
                 "siteName": "variables('sites_nnuggab2018web_name')",
@@ -291,7 +316,7 @@
             "type": "Microsoft.Web/sites/config",
             "name": "[concat(variables('sites_nnuggab2018functions_name'), '/', variables('config_web_name'))]",
             "apiVersion": "2016-08-01",
-            "location": "West Europe",            
+            "location": "[resourceGroup().location]",            
             "scale": null,
             "properties": {
                 "numberOfWorkers": 1,
@@ -404,7 +429,7 @@
             "type": "Microsoft.Web/sites/hostNameBindings",
             "name": "[concat(variables('sites_nnuggab2018functions_name'), '/', variables('hostNameBindings_nnuggab2018functions.azurewebsites.net_name'))]",
             "apiVersion": "2016-08-01",
-            "location": "West Europe",
+            "location": "[resourceGroup().location]",
             "scale": null,
             "properties": {
                 "siteName": "[variables('sites_nnuggab2018functions_name')]",
@@ -414,6 +439,24 @@
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', variables('sites_nnuggab2018functions_name'))]"
             ]
-        }
+        },
+        {            
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[variables('sites_appinsights_name')]",
+            "apiVersion": "2015-05-01",
+            "location": "[resourceGroup().location]",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "Application_Type": "web",
+                "Flow_Type": "Redfield",
+                "Request_Source": "IbizaAIExtension",
+                "HockeyAppId": "",
+                "SamplingPercentage": null,
+                "applicationId": "[variables('sites_appinsights_name')]"
+            },
+            "dependsOn": []
+        }     
     ]
 }
