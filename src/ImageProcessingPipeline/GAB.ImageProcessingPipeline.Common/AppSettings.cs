@@ -7,7 +7,7 @@ namespace GAB.ImageProcessingPipeline.Common
     public static class AppSettings
     {
         public static readonly string FunctionsKey = ConfigurationManager.AppSettings["FunctionsKey"];
-        public static readonly string IngressFunctionBaseUrl = ConfigurationManager.AppSettings["Endpoints.IngressFunction.BaseUrl"];
+        public static readonly string IngressFunctionBaseUrl = ConfigurationManager.AppSettings["IngressFunctionBaseUrl"];
         public static readonly string BlobStorageConnectionString = ConfigurationManager.AppSettings[Constants.BlobStorageConnectionName];
         public static readonly string ApplicationInsightsInstrumentationKey = ConfigurationManager.AppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"];
         public static readonly string CognitiveServicesSubscriptionKey = ConfigurationManager.AppSettings["CognitiveServicesSubscriptionKey"];
