@@ -175,8 +175,6 @@
     <Compile Include="Drawing\ImageExtensions.cs" />
     <Compile Include="Drawing\ImageResizer.cs" />
     <Compile Include="Drawing\ImageSize.cs" />
-    <Compile Include="Functions\CognitiveServicesProcessor.cs" />
-    <Compile Include="Functions\ColorMatrixProcessor.cs" />
     <Compile Include="Functions\ExifProcessor.cs" />
     <Compile Include="Functions\IngressProcessor.cs" />
     <Compile Include="Functions\ScalerProcessor.cs" />

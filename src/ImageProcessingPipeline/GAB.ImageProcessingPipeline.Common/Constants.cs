@@ -21,11 +21,7 @@ namespace GAB.ImageProcessingPipeline.Common
             ScaledLarge,
             ScaledMedium,
             ScaledSmall,
-            Exif,
-            CognitiveServices,
-            ColorMatrixLarge,
-            ColorMatrixMedium,
-            ColorMatrixSmall
+            Exif
         };
 
         public const string Originals = "imagepipeline-originals";
@@ -35,10 +31,5 @@ namespace GAB.ImageProcessingPipeline.Common
         public const string ScaledSmall = "imagepipeline-scaled-sm";
 
         public const string Exif = "imagepipeline-exif";
-        public const string CognitiveServices = "imagepipeline-cognitiveservices";
-
-        public const string ColorMatrixLarge = "imagepipeline-colormatrix-lg";
-        public const string ColorMatrixMedium = "imagepipeline-colormatrix-md";
-        public const string ColorMatrixSmall = "imagepipeline-colormatrix-sm";
     }
 }

@@ -51,15 +51,7 @@
 
 <br />
 
-@Html.Partial("modules/CognitiveServices")
-
-<br />
-
 @Html.Partial("modules/Scaled")
-
-<br />
-
-@Html.Partial("modules/ColorMatrix")
 
 @section scripts {
     <script type="text/javascript" async>
@@ -71,8 +63,6 @@
             originalModule.reset();
             exifModule.reset();
             scalingModule.reset();
-            colorMatrixModule.reset();
-            cognitiveServicesModule.reset();
         }
 
         function processingInProgress(fileName) {
@@ -81,8 +71,6 @@
             originalModule.startPollingForResource(fileName);
             exifModule.startPollingForResource(fileName);
             scalingModule.startPollingForResource(fileName);
-            colorMatrixModule.startPollingForResource(fileName);
-            cognitiveServicesModule.startPollingForResource(fileName);
         }
 
         function resetUploadFailed() {

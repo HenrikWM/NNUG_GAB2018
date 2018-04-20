@@ -205,8 +205,6 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ImageProcessingPipeline\modules\base-module.js" />
-    <Content Include="Scripts\ImageProcessingPipeline\modules\colorMatrix-module.js" />
-    <Content Include="Scripts\ImageProcessingPipeline\modules\cognitiveServices-module.js" />
     <Content Include="Scripts\ImageProcessingPipeline\modules\exif-module.js" />
     <Content Include="Scripts\ImageProcessingPipeline\modules\original-module.js" />
     <Content Include="Scripts\ImageProcessingPipeline\utils\http.js" />
@@ -237,9 +235,7 @@
     <Content Include="Views\Upload\Index.cshtml" />
     <Content Include="Views\Shared\modules\Exif.cshtml" />
     <Content Include="Views\Shared\modules\Scaled.cshtml" />
-    <Content Include="Views\Shared\modules\ColorMatrix.cshtml" />
     <Content Include="Views\Shared\modules\Original.cshtml" />
-    <Content Include="Views\Shared\modules\CognitiveServices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
