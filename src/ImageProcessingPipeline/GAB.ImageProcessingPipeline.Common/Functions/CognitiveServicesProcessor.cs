@@ -12,8 +12,6 @@ namespace GAB.ImageProcessingPipeline.Common.Functions
 {
     public static class CognitiveServicesProcessor
     {
-        private const string EmptyJsonString = "{}";
-
         public const string OutputBlobPath = BlobContainers.CognitiveServices + "/" + "{name}.json";
 
         public static async Task Process(Stream image, CloudBlockBlob jsonBlob, string name, TraceWriter log)
